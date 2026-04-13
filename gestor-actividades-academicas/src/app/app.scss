@@ -1,6 +1,4 @@
-// =====================
-// TOOLBAR
-// =====================
+
 .toolbar {
   .toolbar-app {
     background-color: crimson !important;
@@ -8,9 +6,6 @@
   }
 }
 
-// =====================
-// LAYOUT PRINCIPAL
-// =====================
 .contenedor-principal {
   max-width: 680px;
   margin: 0 auto;
@@ -20,9 +15,6 @@
   gap: 24px;
 }
 
-// =====================
-// FORMULARIO
-// =====================
 .tarjeta-formulario {
   mat-card-content {
     display: flex;
@@ -40,9 +32,6 @@
   }
 }
 
-// =====================
-// RESUMEN
-// =====================
 .tarjeta-resumen {
   h2 {
     font-size: 13px;
@@ -67,17 +56,11 @@
   }
 }
 
-// =====================
-// FILTROS
-// =====================
 .filtros {
   display: flex;
   justify-content: center;
 }
 
-// =====================
-// LISTA DE ACTIVIDADES
-// =====================
 .lista-actividades {
   display: flex;
   flex-direction: column;
@@ -94,23 +77,23 @@
 }
 
 .tarjeta-actividad {
-  mat-card-content.fila-tarea {
+  .fila-tarea {
     display: flex;
-    align-items: flex-start;
-    padding: 12px 0 4px;
+    justify-content: space-between; 
+    align-items: center;           
+    width: 100%;
   }
 
   .info-izquierda {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    width: 100%;
+    flex-grow: 1; 
   }
 
-  .info-actividad {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  .info-derecha {
+    flex-shrink: 0; 
+  }
 
     strong {
       font-size: 14px;
@@ -120,7 +103,7 @@
       font-size: 12px;
       color: rgba(0, 0, 0, 0.55);
     }
-  }
+
 
   .estado-actividad {
     font-size: 12px;
@@ -147,5 +130,18 @@
     background: rgba(0, 0, 0, 0.07);
     color: rgba(0, 0, 0, 0.6);
     width: fit-content;
+  }
+}
+
+.footer-simple {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+
+  p {
+    margin: 4px 0;
   }
 }

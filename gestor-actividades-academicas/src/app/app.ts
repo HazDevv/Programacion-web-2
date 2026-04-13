@@ -14,7 +14,7 @@ import { provideNativeDateAdapter } from '@angular/material/core'; // Necesario 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     CommonModule, FormsModule, MatFormFieldModule, 
     MatInputModule, MatButtonModule, MatCardModule, MatIconModule,
     MatDatepickerModule,MatAutocompleteModule,MatNativeDateModule,
-    MatCheckboxModule, MatToolbarModule,MatButtonToggleModule
+    MatCheckboxModule, MatToolbarModule,MatButtonToggleModule,
+    MatSnackBarModule
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './app.html',
@@ -31,7 +32,18 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 })
 export class App {
   // Inyectamos el servicio ???????
-  constructor(public service: ActividadService) {}
+  constructor(public service: ActividadService,
+              private snackBar: MatSnackBar) {
+              this.showAdvice();
+              }
+
+  showAdvice() {
+    this.snackBar.open('Mejor experiencia en móviles', 'Entendido', {
+      duration: 3000, 
+      horizontalPosition: 'center',
+      verticalPosition: 'top', 
+    });
+  }
 
   nombre = '';
   materia = '';

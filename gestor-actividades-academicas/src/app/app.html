@@ -6,6 +6,16 @@
 
 <main class="contenedor-principal">
 
+
+  <section class="tarjeta-resumen">
+    <h2>Resumen de las actividades</h2>
+    <div class="indicators">
+      <span>Totales: {{ service.totalActividades() }}</span>
+      <span>pendientes de hacer: {{ service.pendientes() }}</span>
+      <span>Hechas: {{ service.completadas() }}</span>
+    </div>
+  </section>
+
   <mat-card class="tarjeta-formulario">
     <mat-card-content>
       <mat-form-field appearance="outline" class="full-width">
@@ -44,15 +54,6 @@
     </mat-card-content>
   </mat-card>
 
-  <section class="tarjeta-resumen">
-    <h2>Resumen</h2>
-    <div class="indicators">
-      <span>Total: {{ service.totalActividades() }}</span>
-      <span>Pendientes: {{ service.pendientes() }}</span>
-      <span>Completadas: {{ service.completadas() }}</span>
-    </div>
-  </section>
-
   <section class="filtros" style="margin: 20px 0; display: flex; justify-content: center;">
   <mat-button-toggle-group 
     [value]="service.filtroActual()" 
@@ -60,37 +61,52 @@
     
     <mat-button-toggle value="todas">Todas</mat-button-toggle>
     <mat-button-toggle value="pendientes">Pendientes</mat-button-toggle>
-    <mat-button-toggle value="completadas">Completadas</mat-button-toggle>
+    <mat-button-toggle value="completadas">Hechas</mat-button-toggle>
     
   </mat-button-toggle-group>
 </section>
 
-  <section class="lista-actividades">
-    <h2>Tus actividades</h2>
-    @for (item of service.listaFiltradas(); track item.id){
-    <mat-card class="tarjeta-actividad">
-      <mat-card-content class="fila-tarea">
+<mat-card class="tarjeta-formulario">
+  <mat-card-content>
+    <section class="lista-actividades">
+      <h2>Tus actividades</h2>
+      
+      @for (item of service.listaFiltradas(); track item.id){
+        <div class="tarjeta-actividad"> 
+          <div class="fila-tarea">
+  
+  <div class="info-izquierda">
+    <mat-checkbox [checked]="item.completada" (change)="service.cambiarEstado(item.id)">
+    </mat-checkbox>
+    <div class="info-actividad">
+      <strong>{{ item.nombre }}</strong>
+      <br>
+      <small>{{ item.materia }}</small>
+      <p class="estado-actividad" [class.completada]="item.completada">
+        {{ item.completada ? 'Completada' : 'Pendiente' }}
+      </p>
+      <p class="fecha-entrega">Entrega: {{ item.fecha }}</p>
+      <span class="prioridad">{{ item.prioridad }}</span>
+    </div>
+  </div>
 
-        <div class="info-izquierda">
-          <mat-checkbox [checked]="item.completada" (change)="service.cambiarEstado(item.id)">
-          </mat-checkbox>
+  <div class="info-derecha">
+    <button mat-icon-button color="warn" (click)="service.eliminar(item.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
 
-          <div class="info-actividad">
-            <strong>{{ item.nombre }}</strong>
-            <small>{{ item.materia }}</small>
-
-            <p class="estado-actividad" [class.completada]="item.completada">
-              {{ item.completada ? 'Completada' : 'Pendiente' }}
-            </p>
-
-            <p class="fecha-entrega">Entrega: {{ item.fecha }}</p>
-            <span class="prioridad">{{ item.prioridad }}</span>
           </div>
         </div>
-      </mat-card-content>
-    </mat-card>
-    } @empty {
-    <p>No tienes actividades registradas aún.</p>
-    }
-  </section>
+      } @empty {
+        <p>No tienes actividades flojo.</p>
+      }
+    </section>
+  </mat-card-content>
+</mat-card>
 </main>
+
+<footer class="footer-simple">
+  <p>&copy; 2026 Gestor de Actividades Académicas</p>
+  <p>Desarrollado con Angular & Material</p>
+</footer>
