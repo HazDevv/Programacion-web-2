@@ -3,17 +3,6 @@ from enum import Enum
 
 
 class Categoria(str, Enum):
-    """
-    Enumeración de categorías válidas para los contactos.
-    
-    ¿Por qué usar Enum?
-    - Evita errores de tipeo (solo permite valores predefinidos)
-    - Facilita la validación automática de FastAPI
-    - Mejora la documentación de la API
-    - Hace el código más mantenible
-    
-    str: Hereda de str para que JSON lo serialice como texto
-    """
     PERSONAL = "personal"
     TRABAJO = "trabajo"
     FAMILIA = "familia"

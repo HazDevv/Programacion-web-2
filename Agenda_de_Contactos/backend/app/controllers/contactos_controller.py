@@ -165,19 +165,7 @@ def buscar_contactos(texto: str) -> list[Contacto]:
 
 
 def obtener_contactos_por_categoria(categoria: str) -> list[Contacto]:
-    """
-    Filtra contactos por categoría específica.
 
-    Parámetros:
-    - categoria: categoría a filtrar (personal, trabajo, familia)
-
-    Retorna:
-    - una lista con los contactos de esa categoría
-
-    Si la categoría no es válida:
-    - lanza HTTP 400 (Bad Request)
-    """
-    # Validar que la categoría sea válida
     try:
         categoria_enum = Categoria(categoria.lower())
     except ValueError:
@@ -185,8 +173,6 @@ def obtener_contactos_por_categoria(categoria: str) -> list[Contacto]:
             status_code=400,
             detail=f"Categoría inválida. Las categorías válidas son: {', '.join([c.value for c in Categoria])}"
         )
-
-    # Filtrar contactos por categoría
     resultados = [
         contacto
         for contacto in contactos_db

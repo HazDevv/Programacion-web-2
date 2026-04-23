@@ -234,8 +234,6 @@ export class FormularioContactoComponent {
   /**
    * Construye el objeto de entrada y delega el guardado al servicio.
    * El id no se genera aquí; lo genera el backend.
-   * 
-   * NUEVO: Ahora incluimos la categoría seleccionada por el usuario.
    */
   guardar(): void {
     if (!this.nombre.trim() || !this.telefono.trim() || !this.correo.trim() || !this.categoria) {

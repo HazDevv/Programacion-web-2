@@ -1,16 +1,4 @@
-/**
- * ============================================
- * ENUM DE CATEGORÍAS
- * ============================================
- * 
- * Definimos las categorías válidas para evitar errores de tipeo.
- * 
- * ¿Por qué usar enum en TypeScript?
- * - Autocompletado en el IDE
- * - Validación en tiempo de desarrollo
- * - Consistencia con el backend
- * - Prevención de errores (no se puede escribir "amigos")
- */
+
 export enum Categoria {
   PERSONAL = 'personal',
   TRABAJO = 'trabajo',
@@ -83,8 +71,6 @@ export interface Contacto {
  * - deja claras las responsabilidades
  * - refleja mejor cómo funciona una API real
  * - hace más mantenible el código
- * 
- * NUEVO: Agregamos el campo "categoria" que el usuario selecciona.
  */
 export interface ContactoCreate {
   nombre: string;

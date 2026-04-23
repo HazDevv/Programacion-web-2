@@ -204,16 +204,8 @@ import { Categoria } from '../../models/contacto';
 export class FiltroCategoriasComponent {
   private contactosService = inject(ContactosService);
 
-  /**
-   * Categorías disponibles para los chips.
-   * Usamos Object.values() para obtener todos los valores del enum.
-   */
   categorias = Object.values(Categoria);
 
-  /**
-   * Signal de solo lectura para obtener la categoría seleccionada actual.
-   * Esto permite que el chip muestre el estado correcto.
-   */
   categoriaSeleccionada = this.contactosService.categoriaSeleccionada;
 
   /**
